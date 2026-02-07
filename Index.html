@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Rose Day ❤️</title>
+
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(135deg, #ff9ec4, #ffc1da);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        color: white;
+    }
+
+    .container {
+        z-index: 2;
+        width: 90%;
+        max-width: 500px;
+    }
+
+    h1 {
+        font-size: 28px;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 12px 25px;
+        font-size: 18px;
+        border: none;
+        border-radius: 25px;
+        background: white;
+        color: #ff4f8b;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        transform: scale(1.1);
+        background: #ffe4ef;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* hearts */
+    .heart {
+        position: absolute;
+        bottom: -20px;
+        font-size: 20px;
+        animation: floatUp 5s linear infinite;
+        opacity: 0.7;
+    }
+
+    @keyframes floatUp {
+        0% {
+            transform: translateY(0) scale(1);
+            opacity: 0.7;
+        }
+        100% {
+            transform: translateY(-110vh) scale(1.5);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1 id="message">Happy Rose Day to the rose of my life 🌹</h1>
+    <button onclick="nextMessage()">Click Me</button>
+</div>
+
+<script>
+    const messages = [
+        "Even if I have to prick my hands on thorns, I will hold my rose 🌹",
+        "If I’m a house, you are the garden who makes it beautiful 🌷",
+        "To me, even your fart smells like a rose scent 😂🌹",
+        "Your smile makes me bloom ❤️",
+        "With my whole heart, my lady Gyan wishes you Happy Rose Day 🌹❤️"
+    ];
+
+    let index = 0;
+
+    function nextMessage() {
+        if (index < messages.length) {
+            const msg = document.getElementById("message");
+            msg.style.animation = "none";
+            void msg.offsetWidth;
+            msg.innerText = messages[index];
+            msg.style.animation = "fadeIn 1s ease-in-out";
+            index++;
+        }
+    }
+
+    // create hearts
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerText = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+        heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
